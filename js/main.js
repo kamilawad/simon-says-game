@@ -1,11 +1,11 @@
 const playButton = document.querySelector('#play');
 const highScore = document.querySelector('#high-score');
 const levelConatiner = document.querySelector('#level');
-const tiles = document.querySelectorAll('.tile');
 const green = document.querySelector('.green');
 const red = document.querySelector('.red');
 const blue = document.querySelector('.blue');
 const yellow = document.querySelector('.yellow');
+const tiles = [green, red, blue, yellow];
 
 const colors = ['green', 'red', 'blue', 'yellow'];
 
@@ -41,10 +41,13 @@ function computerDisplay() {
         }, 500);
       }, i * 800);
   }
-  playerChoices();
 }
 
 function playAudio(audioName) {
   const audio = new Audio(`sounds/${audioName}.mp3`);
   audio.play();
+}
+
+for (let i = 0; i < 4; i++) {
+  tiles[i].addEventListener('click', playerChoice(tiles[i]));
 }
