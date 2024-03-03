@@ -60,13 +60,17 @@ function playerClick(clickedColor) {
   playAudio(clickedColor);
   for (let i = 0; i < playerChoices.length; i++) {
     if (playerChoices[i] != computerChoices[i]) {
-      alert('Game over!');
+      alert('YOU LOSE!');
+      const audio = new Audio('sounds/game-over.wav');
+      audio.play();
       reset();
       return;
     }
   }
   if (playerChoices.length == computerChoices.length) {
     if (level == 12) {
+      const audio = new Audio('sounds/game-win.wav');
+      audio.play();
       alert('YOU WIN!');
       highScorecontainer.innerText = 12;
       reset();
